@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Beloved Sandhya ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ff4d6d;
+      --secondary: #ff8fa3;
+      --gold: #ffd166;
+      --light: #fff0f3;
+      --dark: #590d22;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Romantic Intro */
+    .intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    
+    .intro-content {
+      text-align: center;
+      transform: translateY(30px);
+      opacity: 0;
+      animation: fadeInUp 1.5s ease-out 0.5s forwards;
+    }
+    
+    .intro-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 15px rgba(255, 77, 109, 0.5);
+    }
+    
+    .enter-btn {
+      padding: 15px 40px;
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: white;
+      font-size: 1.3rem;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-top: 2rem;
+      font-family: 'Montserrat', sans-serif;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .enter-btn:hover {
+      background: var(--primary);
+      box-shadow: 0 0 25px var(--primary);
+    }
+    
+    .enter-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .enter-btn:hover::before {
+      left: 100%;
+    }
+    
+    /* Main Content */
+    .main-content {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    header {
+      text-align: center;
+      margin-top: 3rem;
+      position: relative;
+    }
+    
+    .birthday-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 4rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    
+    .name {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .name::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: var(--primary);
+    }
+    
+    .message-box {
+      background: white;
+      padding: 3rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin: 2rem auto;
+      position: relative;
+      max-width: 800px;
+    }
+    
+    .message {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    
+    .signature {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-top: 3rem;
+      text-align: right;
+    }
+    
+    .footer {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 1rem;
+      color: var(--dark);
+    }
+    
+    /* Floating Elements */
+    .floating-hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--primary);
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
+      opacity: 0;
+    }
+    
+    .heart:before,
+    .heart:after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+    
+    .heart:before { top: -10px; left: 0; }
+    .heart:after { left: -10px; top: 0; }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes float {
+      0% { transform: rotate(45deg) translateY(100vh) scale(0.6); opacity: 0; }
+      10% { opacity: 0.7; }
+      90% { opacity: 0.7; }
+      100% { transform: rotate(45deg) translateY(-100vh) scale(1); opacity: 0; }
+    }
+    
+    @keyframes glow {
+      from { text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary); }
+      to { text-shadow: 0 0 20px var(--primary), 0 0 40px var(--secondary); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Romantic Intro -->
+  <div class="intro" id="intro">
+    <div class="intro-content">
+      <h1 class="intro-title">For My Queen 👑</h1>
+      <p style="color: white; font-size: 1.3rem; margin-bottom: 2rem;">A Birthday Wish From Your Lover 🎀</p>
+      <button class="enter-btn" id="enterBtn">Open With Love</button>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <div class="main-content" id="mainContent">
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <div class="container">
+      <header>
+        <div class="birthday-text">Happy Birthday</div>
+        <h1 class="name">Sandhya</h1>
+      </header>
+      
+      <div class="message-box">
+        <div class="message">
+          Happy Birthday Jaan...... Plz Aata Tr Bolu de He.... Yar Kiti Vaat Baghu Ajun Tujhi Itk Prem Krun Pn Tula Ks Nahi Samjt Aahe Yar Majh Prem....🥺 By The Way Happy Birthday Again..🎀👰.... Majhi Shevtchi Ichha Hich Rahil Ki Tu Nehmi Khush Rahav...... Note:- I will Always Love You 💕🎀 I LOVE YOU ☺️ ✨
+          <br><br>
+          Khup Mehnat Keli Aahe Hi Website Banvayla...... ONLY FOR YOU JAAN 🥰💕🎀
+        </div>
+        <div class="signature">With all my love, Vishal</div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      Made with ❤️ Only For You
+    </div>
+  </div>
+
+  <script>
+    // DOM Elements
+    const intro = document.getElementById('intro');
+    const enterBtn = document.getElementById('enterBtn');
+    const mainContent = document.getElementById('mainContent');
+    const floatingHearts = document.getElementById('floatingHearts');
+    
+    // Create floating hearts
+    function createHearts() {
+      const heartCount = Math.min(Math.floor(window.innerWidth / 20), 50);
+      
+      for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (4 + Math.random() * 8) + 's';
+        heart.style.animationDelay = Math.random() * 5 + 's';
+        floatingHearts.appendChild(heart);
+      }
+    }
+    
+    // Enter button click handler
+    enterBtn.addEventListener('click', () => {
+      intro.style.opacity = '0';
+      intro.style.transition = 'all 1s ease';
+      
+      setTimeout(() => {
+        intro.style.display = 'none';
+        mainContent.style.display = 'block';
+        
+        setTimeout(() => {
+          mainContent.style.opacity = '1';
+        }, 100);
+      }, 1000);
+    });
+    
+    // Initialize
+    window.addEventListener('load', () => {
+      createHearts();
+      
+      // Responsive hearts
+      window.addEventListener('resize', () => {
+        floatingHearts.innerHTML = '';
+        createHearts();
+      });
+    });
+  </script>
+</body>
+</html>
